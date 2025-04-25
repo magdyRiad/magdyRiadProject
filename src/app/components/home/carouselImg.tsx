@@ -51,14 +51,14 @@ const CarouselImg = () => {
             />
             <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
               <Link
-                href={`#slide${index === 0 ? images.length : index}`}
+                href={`#slide${index + 2 > images.length ? 1 : index + 2}`}
                 className="btn btn-circle"
               >
                 ❮
               </Link>
               <Link
-                href={`#slide${index + 2 > images.length ? 1 : index + 2}`}
                 className="btn btn-circle"
+                href={`#slide${index === 0 ? images.length : index}`}
               >
                 ❯
               </Link>
