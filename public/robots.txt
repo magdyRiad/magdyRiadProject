@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://magdyriad.net
+
+# Sitemaps
+Sitemap: https://magdyriad.net/sitemap.xml
