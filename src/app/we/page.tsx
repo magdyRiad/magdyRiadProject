@@ -7,7 +7,8 @@ import titleImage from "../image/title_image.jpg";
 
 import machine1 from "../image/20.jpeg";
 import machine2 from "../image/21.jpeg";
-import machine3 from "../image/20.jpeg";
+import machine4 from "../image/22.jpeg";
+import machine5 from "../image/23.jpeg";
 
 const WeAre = () => {
   return (
@@ -40,43 +41,6 @@ const WeAre = () => {
           <div className="w-28 h-1 bg-red-600 rounded-full mt-5"></div>
         </motion.div>
       </section>
-
-      {/* الفيديو */}
-
-      {/* <section className="relative h-[45vh] md:h-[60vh] overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source
-            src="https://res.cloudinary.com/djtp5oepp/video/upload/v1781770377/magtic1_ozmlza.mp4"
-            type="video/mp4"
-          />
-        </video>
-
-        <div className="absolute inset-0 bg-black/60" />
-
-        <div className="absolute inset-0 flex items-center justify-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center px-6"
-          >
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
-              نبني المستقبل بأسس قوية
-            </h2>
-
-            <p className="text-gray-200 max-w-3xl mx-auto text-sm md:text-lg">
-              خبرة طويلة في تنفيذ أعمال الخوازيق والأساسات الميكانيكية
-              والمشروعات الهندسية المتخصصة.
-            </p>
-          </motion.div>
-        </div>
-      </section> */}
 
       {/* من نحن */}
 
@@ -135,7 +99,7 @@ const WeAre = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[machine1, machine2, machine3].map((img, index) => (
+            {[machine1, machine2, machine4, machine5].map((img, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 60 }}
@@ -158,6 +122,45 @@ const WeAre = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+      {/* فيديو تعريفي */}
+
+      <section className="py-10 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="tracking-[6px] text-red-500 font-bold mb-4">
+              COMPANY SHOWCASE
+            </p>
+
+            <h2 className="text-4xl md:text-5xl font-black text-[#0B1F3A]">
+              شاهد أعمالنا على أرض الواقع
+            </h2>
+
+            <div className="w-28 h-1 bg-red-600 rounded-full mx-auto mt-6" />
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="overflow-hidden rounded-[32px] shadow-2xl"
+          >
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls
+              className="w-full aspect-video object-cover"
+            >
+              <source
+                src="https://res.cloudinary.com/djtp5oepp/video/upload/v1781770377/magtic1_ozmlza.mp4"
+                type="video/mp4"
+              />
+            </video>
+          </motion.div>
         </div>
       </section>
     </div>
