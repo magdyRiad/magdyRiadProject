@@ -1,6 +1,10 @@
-import React from "react";
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
-import titls from "../image/title_image.jpg";
+
+import titleImage from "../image/title_image.jpg";
+
 import machine1 from "../image/20.jpeg";
 import machine2 from "../image/21.jpeg";
 import machine3 from "../image/20.jpeg";
@@ -8,81 +12,154 @@ import machine3 from "../image/20.jpeg";
 const WeAre = () => {
   return (
     <div>
-      {/* Hero Section */}
-      <div className="relative h-[55vh]">
+      {/* Hero */}
+
+      <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
         <Image
-          src={titls}
+          src={titleImage}
           alt="cover"
-          className="fixed top-0 left-0 w-screen h-[50vh] object-cover -z-10"
+          fill
+          priority
+          className="object-cover"
         />
-        <div className="z-20 w-screen h-[50vh] text-white text-3xl md:text-5xl  font-bold flex justify-center items-center bg-black/40">
-          شركة ماجتك
-        </div>
-      </div>
-      <div className="bg-white">
-        {/* About Us Section */}
-        <div className="px-6 md:px-20 py-10 text-right">
-          <h2 className="text-3xl font-bold text-[#0B1F3A] mb-4">من نحن؟</h2>
-          <p className="m-3">
-            تعد شركة ماجتك للأساسات الميكانيكيه و المقاولات العامه ( المهندس /
-            مجدي رياض ) واحده من اقدم و اعرق شركات الاساسات و الخوازيق في مصر
-            لما تتمتع به من خبرات واسعه تعود لمالكها و مؤسسها المهندس مجدي رياض
-            <p className="bg-[#FF3131]/ my-2 font-bold rounded-md p-1">
-              {" "}
-              . - تتخصص الشركه في جميع انواع الخوازيق الميكانيكيه و جميع انواع
-              تجارب التحميل بما في ذلك تجارب التكامل للخوازيق ( P.I.T ) PILE
-              INTEGRITY TEST .
-            </p>
-          </p>
-          <p>
-            -الخوازيق الميكانيكيه انواعها كثيره لكن اشهرها علي الاطلاق -
-            الخوازيق بنظام الحفر الدوار (BORED PILES) و هو الأفضل علي الاطلاق من
-            حيث الامان و الجوده و اعلي نتيجة في اختبارات التحميل
-            <p className="m-3">
-              -تنصح شركتنا - كما في كبري شركات الاساسات بمصر (اوراسكوم - عثمان
-              احمد عثمان- مصر ريموند - باور ) - دائما بالخوازيق بنظام الحفر
-              الدوار (Bored piles ) .
-            </p>
-            - هذا النوع من الخوازيق هو أفضل انواع الخوازيق لما تضمنه من كفاءه
-            عاليه و ضمان شبه تام لنتيجة اي تجربة تحميل او حتي اختبارات الفوق
-            صوتيه ( Ultra-sound) التي تقوم شركتنا ايضا بتقديمها للسادة العملاء .
-          </p>
-        </div>
 
-        {/* Clients Section */}
-        {/* <div className="px-6 md:px-20 pb-10 text-right">
-          <h2 className="text-3xl font-bold text-[#0B1F3A] mb-4">عملاؤنا</h2>
-          <p className="text-lg text-gray-700 leading-loose">
-            نفتخر بأننا قدمنا خدماتنا لمجموعة من أكبر الشركات والمؤسسات في مصر،
-            من بينها شركات مقاولات كبرى، مصانع، وجهات حكومية، وشركات تطوير عقاري
-            مرموقة.
-          </p>
-        </div> */}
+        <div className="absolute inset-0 bg-[#0B1F3A]/30" />
 
-        {/* Machines Gallery */}
-        <div className="px-6 md:px-20 pb-10">
-          <h2 className="text-3xl font-bold text-[#0B1F3A] text-right mb-6">
-            معداتنا وتقنياتنا
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <Image
-              src={machine1}
-              alt="machine 1"
-              className="rounded-md shadow-lg hover:scale-105 transition duration-300"
-            />
-            <Image
-              src={machine2}
-              alt="machine 2"
-              className="rounded-md shadow-lg hover:scale-105 transition duration-300"
-            />
-            <Image
-              src={machine3}
-              alt="machine 3"
-              className="rounded-md shadow-lg hover:scale-105 transition duration-300"
-            />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="relative z-10 h-full flex flex-col items-center justify-center text-white"
+        >
+          <p className="tracking-[6px] text-red-500 font-bold mb-4">
+            MAGTEC FOUNDATIONS
+          </p>
+
+          <h1 className="text-4xl md:text-6xl font-black">شركة ماجتك</h1>
+
+          <div className="w-28 h-1 bg-red-600 rounded-full mt-5"></div>
+        </motion.div>
+      </section>
+
+      {/* الفيديو */}
+
+      {/* <section className="relative h-[45vh] md:h-[60vh] overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source
+            src="https://res.cloudinary.com/djtp5oepp/video/upload/v1781770377/magtic1_ozmlza.mp4"
+            type="video/mp4"
+          />
+        </video>
+
+        <div className="absolute inset-0 bg-black/60" />
+
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center px-6"
+          >
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
+              نبني المستقبل بأسس قوية
+            </h2>
+
+            <p className="text-gray-200 max-w-3xl mx-auto text-sm md:text-lg">
+              خبرة طويلة في تنفيذ أعمال الخوازيق والأساسات الميكانيكية
+              والمشروعات الهندسية المتخصصة.
+            </p>
+          </motion.div>
+        </div>
+      </section> */}
+
+      {/* من نحن */}
+
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="bg-white rounded-3xl shadow-xl p-8 md:p-14"
+          >
+            <h2 className="text-4xl font-black text-[#0B1F3A] text-right mb-8">
+              من نحن ؟
+            </h2>
+
+            <div className="space-y-6 text-gray-700 leading-10 text-base md:text-lg text-right">
+              <p>
+                تعد شركة ماجتك للأساسات الميكانيكية والمقاولات العامة واحدة من
+                أعرق الشركات المتخصصة في مجال الخوازيق والأساسات داخل مصر.
+              </p>
+
+              <div className="bg-[#0B1F3A] text-white p-6 rounded-2xl">
+                تتخصص الشركة في جميع أنواع الخوازيق الميكانيكية وجميع أنواع
+                تجارب التحميل بما في ذلك اختبارات التكامل للخوازيق (P.I.T).
+              </div>
+
+              <p>
+                يعد نظام الحفر الدوار (Bored Piles) من أفضل أنظمة الخوازيق من
+                حيث الأمان والجودة وتحقيق أعلى نتائج اختبارات التحميل.
+              </p>
+
+              <p>
+                كما توفر الشركة اختبارات الـ Ultra-Sound والحلول الهندسية
+                المتقدمة بأحدث المعدات.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* معداتنا */}
+
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="tracking-[6px] text-red-500 font-bold mb-4">
+              OUR EQUIPMENT
+            </p>
+
+            <h2 className="text-4xl md:text-5xl font-black text-[#0B1F3A]">
+              معداتنا وتقنياتنا
+            </h2>
+
+            <div className="w-28 h-1 bg-red-600 rounded-full mx-auto mt-6"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[machine1, machine2, machine3].map((img, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.15,
+                }}
+                whileHover={{
+                  y: -10,
+                }}
+                className="overflow-hidden rounded-3xl shadow-xl"
+              >
+                <Image
+                  src={img}
+                  alt={`machine-${index}`}
+                  className="w-full h-80 object-cover transition duration-500 hover:scale-110"
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

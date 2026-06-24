@@ -1,9 +1,11 @@
-import React from "react";
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
-import titls from "../image/title_image.jpg";
 import { MdEngineering } from "react-icons/md";
 
-// استبدل الصور المؤقتة دي بصور المشاريع الحقيقية
+import titleImage from "../image/title_image.jpg";
+
 import project1 from "../image/1.jpeg";
 import project2 from "../image/2.jpeg";
 import project3 from "../image/3.jpeg";
@@ -18,318 +20,170 @@ const projects = [
     year: "2020",
     client: "عدلي منصور",
     piles: "غير محدد",
-    diameter: "17 م - قطر 60 سم ",
+    diameter: "17 م - قطر 60 سم",
     image: project1,
   },
+
   {
     title: "تطوير المريوطية",
     year: "2022",
-    client: "اشراف مكتب محرم باخوم ومكتب  specturm ",
-    piles: "كباري 35 خازوق",
-    diameter: "18 م - قطر 60سم",
+    client: "مكتب محرم باخوم و Spectrum",
+    piles: "35 خازوق",
+    diameter: "18 م - قطر 60 سم",
     image: project2,
   },
+
   {
-    title: "توسعات كوبري الدائري",
+    title: "توسعات الطريق الدائري",
     year: "2022",
-    client: "شركة ابناء حسن علام ",
+    client: "أبناء حسن علام",
     piles: "غير محدد",
-    diameter: "18 م - قطر 60سم",
+    diameter: "18 م - قطر 60 سم",
     image: project6,
   },
+
   {
     title: "كوبري حياة كريمة",
-    client: "غير محدد",
     year: "2022",
+    client: "غير محدد",
     piles: "80 خازوق",
-    diameter: "18 م - قطر 60سم",
+    diameter: "18 م - قطر 60 سم",
     image: project7,
   },
+
   {
     title: "أفران مصنع حديد عز",
-    client: "غير محدد",
     year: "2022",
+    client: "غير محدد",
     piles: "غير محدد",
-    diameter: "16 م - قطر 60سم",
+    diameter: "16 م - قطر 60 سم",
     image: project5,
   },
+
   {
-    title: " بيت الزكاة المصري بمشيخة الازهر الشريف",
+    title: "بيت الزكاة المصري",
     year: "2023",
-    client: "ادارة الهندسيه للمشيخة و مكتب استاذ دكتور /شادي دخان",
+    client: "مشيخة الأزهر الشريف",
     piles: "70 خازوق",
-    diameter: "17 م - قطر 60سم",
+    diameter: "17 م - قطر 60 سم",
     image: project3,
   },
+
   {
-    title: "مقر الجديد لوزارة الإنتاج الحربي",
+    title: "وزارة الإنتاج الحربي",
     year: "2024",
     client: "غير محدد",
     piles: "58 خازوق",
-    diameter: "13 م – قطر 60 سم",
+    diameter: "13 م - قطر 60 سم",
+    image: project4,
+  },
+  {
+    title: "مشروع مترو ابو قير داخل محطة سيدي جابر بالاسكندريه",
+    year: "2026",
+    client: "غير محدد",
+    piles: "غير محدد",
+    diameter: "قطر40 سم 18م",
     image: project4,
   },
 ];
 
 const ProjectsApp = () => {
   return (
-    <div>
-      {/* Hero Section */}
-      <div className="relative h-[55vh]">
+    <section>
+      {/* Hero */}
+
+      <div className="relative h-[45vh] md:h-[55vh] overflow-hidden">
         <Image
-          src={titls}
-          alt="cover"
-          className="fixed top-0 left-0 w-screen h-[50vh] object-cover -z-10 overflow-x-hidden"
+          src={titleImage}
+          alt="projects"
+          fill
+          priority
+          className="object-cover"
         />
-        <div className="z-20 w-screen h-[50vh] text-white text-3xl md:text-5xl  font-bold flex justify-center items-center bg-black/40">
-          اهم المشروعات
+
+        <div className="absolute inset-0 bg-black/20" />
+
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1F3A]/30 to-black/10" />
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-5"
+        >
+          <p className="tracking-[6px] text-red-500 font-bold mb-4">
+            OUR PROJECTS
+          </p>
+
+          <h1 className="text-4xl md:text-6xl font-black">أهم المشروعات</h1>
+
+          <div className="w-28 h-1 bg-red-600 rounded-full mt-6"></div>
+        </motion.div>
+      </div>
+
+      {/* Cards */}
+
+      <div className="bg-slate-50 py-20 px-5">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          {projects.map((proj, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.08,
+              }}
+              whileHover={{
+                y: -10,
+              }}
+              className="group"
+            >
+              <div className="overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300">
+                <div className="overflow-hidden">
+                  <Image
+                    src={proj.image}
+                    alt={proj.title}
+                    className="w-full h-72 object-cover transition duration-500 group-hover:scale-110"
+                  />
+                </div>
+
+                <div className="p-7 text-right">
+                  <h2 className="text-2xl font-black text-[#0B1F3A] mb-6">
+                    {proj.title}
+                  </h2>
+
+                  <div className="space-y-3 text-gray-700">
+                    <p>
+                      📅 <span className="font-bold">السنة :</span> {proj.year}
+                    </p>
+
+                    <p className="flex justify-start items-center gap-2">
+                      <MdEngineering className="text-red-600 text-xl" />
+                      <span>
+                        <span className="font-bold ">العميل :</span>{" "}
+                        {proj.client}
+                      </span>
+                    </p>
+
+                    <p>
+                      🔢 <span className="font-bold">عدد الخوازيق :</span>{" "}
+                      {proj.piles}
+                    </p>
+
+                    <p>
+                      📏 <span className="font-bold">الأبعاد :</span>{" "}
+                      {proj.diameter}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
-
-      {/* Projects Cards */}
-      <div className="bg-white py-12 px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-hidden w-screen">
-        {projects.map((proj, idx) => (
-          <div
-            key={idx}
-            className="rounded-xl shadow-lg overflow-hidden border border-gray-200 flex flex-col"
-          >
-            <Image
-              src={proj.image}
-              alt={proj.title}
-              className="w-full h-60 object-cover"
-            />
-            <div className="p-4 text-right">
-              <h2 className="text-2xl font-bold text-gray-800 mb-2">
-                🏗️ {proj.title}
-              </h2>
-              <p className="text-gray-700 mb-1">📅 السنة: {proj.year}</p>
-              <p className="text-gray-700 mb-1 flex gap-1 items-center">
-                <MdEngineering />
-                العميل: {proj.client}
-              </p>
-              <p className="text-gray-700 mb-1">
-                🔢 عدد الخوازيق: {proj.piles}
-              </p>
-              <p className="text-gray-700">📏 الطول: {proj.diameter}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="bg-gray-50 py-10 px-6 text-right">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">جميع المشاريع</h2>
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-lg text-gray-700 leading-relaxed">
-          <li>
-            خوارق حفر دوار قطر 1.2م – اسم عدد (2) – الهيئة العامة للطرق والكباري
-            – 1995
-          </li>
-          <li>
-            خوارق حفر دوار قطر 0.8م – عدد 20 – ملك/ السباعي كمال دياب أبو النمرس
-            – 1996
-          </li>
-          <li>خوارق حفر قطر 0.6م – عدد 40 – محطة مياه الصف الجديدة – 1997</li>
-          <li>شركة مبارك للإسكان والتعمير بجنوب طره طوبار – 1997</li>
-          <li>
-            خوارق حفر دوار قطر 0.8م – عدد 298 – شركة سعودي للتنمية العمرانية
-            (موقع تويتا) – العبور – 1998
-          </li>
-          <li>
-            خوارق حفر دوار قطر 1.2م – عدد 174 – مشروع برج النيل للشقق الفندقية
-            بالإسكندرية – عمارة جليم – 1998
-          </li>
-          <li>
-            خوارق حفر دوار قطر 0.8م – عدد 60 – عمارة مستشفى الحاجة/ سامية خلوصي
-            – سموحة – الإسكندرية – 1999
-          </li>
-          <li>
-            خوارق حفر دوار قطر 1.2م – عدد 123 – مشروع أحمد عز – المنطقة الصناعية
-            بمدينة بدر – 1999
-          </li>
-          <li>
-            دعم أساسات جامع السلطان قايتباي – باب النصر – مقارنة بشركة النصر
-            للإنشاءات – مدينة الآثار الإسلامية بالقاهرة – 1998
-          </li>
-          <li>
-            خوارق حفر عدد 70 – شركة تيمبكس للمقاولات – منشأ البكري – الجيزة –
-            1998
-          </li>
-          <li>
-            خوارق حفر عدد 105 – عمارة ميكانيكية – شارع عبد الحليم محمود – الملك
-            الصالح – القاهرة – 1999
-          </li>
-          <li>الصالة المغطاة لقيات/ كمال دياب – أبو النمرس – الجيزة – 1999</li>
-          <li>
-            خوارق حفر دوار قطر 0.8م – عدد 97 – عمارة ميكانيكية – خالد محمد شوقي
-            بن المنظور – فيصل – 2000
-          </li>
-          <li>
-            خوارق حفر عدد 100 – عمارة ميكانيكية ملك السيد/ محمد طلعت عبد الله –
-            الزيتون – 2000
-          </li>
-          <li>
-            مشروع جولدن بيراميدز – شركة سنتري فورنيس – مدينة نصر – تجارب تحميل
-            عدد (2) – قطر 0.8م – 2000
-          </li>
-          <li>
-            أعمال حفر نزح – تدعيم أساسات جامع السلطان قايتباي – باب النصر – شركة
-            وادي النيل – للإنشاءات ومدينة الآثار الإسلامية بالقاهرة – 2000
-          </li>
-          <li>
-            🔹 عدد 82 خازوق قطـر 60 سم بطول 14 متر - محطة مبارك (الهيئة القومية
-            لمياه الشرب) - 2002
-          </li>
-          <li>
-            🔹 عدد 75 خازوق قطـر 60 سم بطول 13 متر - شبكة كهرباء الأمــر - 2002
-          </li>
-          <li>
-            🔹 عدد 55 خازوق قطـر 60 سم بطول 14 متر - بنك التنمية والائتمان
-            الزراعي بالجيزة - 2003
-          </li>
-          <li>
-            🔹 عدد 122 خازوق قطـر 60 سم بطول 13 متر - كوبري قصر النيل وشارع احمد
-            حلمي - 2003
-          </li>
-          <li>🔹 خوازيق كفر طهرمس وسوق فيصل وتأجير المعدات - 2003</li>
-          <li>🔹 عدد 70 خازوق بطول 6 م - 2003</li>
-          <li>
-            🔹 عدد 52 خازوق بطول 18 متر قطـر 60 سم - امتداد ش التحرير المعادي -
-            2003
-          </li>
-          <li>
-            🔹 عدد 60 خازوق بطول 18 متر قطر 60 سم - كوبري شركة سامكريت - 2003
-          </li>
-          <li>🔹 عدد 148 خازوق طول 18 متر بطريق الكباش - 2003</li>
-          <li>🔹 عدد 25 خازوق طول 15 متر مدينة الأقصر - 2003</li>
-          <li>🔹 عدد 178 خازوق سور نادي الإعلاميين - 2003</li>
-          <li>🔹 عدد 15 خازوق بمحطة كهرباء 15 متر - 2004</li>
-          <li>🔹 عدد 24 خازوق دفع نفقي بقسم البساتين - 2004</li>
-          <li>🔹 عدد 8 خازوق قطـر 60 سم بشركة دفع وانفاق - 2004</li>
-          <li>🔹 عدد 127 خازوق طول 18 متر بكفر البطيخ - دمياط - 2004</li>
-          <li>🔹 عدد 7 خازوق طول 12 متر - شركة دفع وانفاق - 2004</li>
-
-          {/* من الصفحة التانية (مشاريع الأحدث شوية) */}
-          <li>
-            🔹 عدد 22 خازوق قطر 60 سم بطول 12 متر - مشروع تابع لشركة أوراسكوم -
-            2015
-          </li>
-          <li>🔹 عدد 5 خازوق قطر 60 سم بطول 9 متر - كوبري بني يوسف - 2015</li>
-          <li>🔹 عدد 48 خازوق (بئر مياه بالوادي الجديد) - 2016</li>
-          <li>
-            🔹 عدد 30 خازوق قطر 60 سم بطول 9 متر (بئر مياه بالوادي الجديد) -
-            2016
-          </li>
-          <li>🔹 عدد 50 خازوق بطول 12 متر وكمرات - مشروع كفر حكيم - 2016</li>
-          <li>🔹 عدد 72 خازوق بطول 15 متر - مشروع مساكن كرداسة - 2017</li>
-          <li>🔹 مشروع المقر الرئيسي لبنك الاستثمار القومي - 2017</li>
-          <li>🔹 عدد 40 خازوق بطول 18 متر قطر 60 سم - مشروع الكهرباء - 2018</li>
-          <li>
-            🔹 عدد 28 خازوق طول 18 متر قطر 60 سم - مشروع كهرباء مغاغة - 2018
-          </li>
-          <li>
-            🔹 عدد 21 خازوق طول 15 متر قطر 50 سم - مشروع محطة مياه كفر الشيخ -
-            2018
-          </li>
-          <li>
-            🔹 عدد 28 خازوق طول 18 متر قطر 60 سم - مشروع مشاة تابع لأزهر
-            الزقازيق - 2019
-          </li>
-          <li>
-            🔹 عدد 22 خازوق طول 12 متر قطر 60 سم - كوبري محور نفق تبة - 2019
-          </li>
-          <li>
-            خازوق قطر 0.8 سم - عدد 90 خازوق سند جوانب حفر بمدينة الإسماعيلية
-            منطقة الثلاثين - 2009
-          </li>
-          <li>
-            خازوق قطر 0.6 سم - عدد 48 خازوق كبارى بكفر الشيخ لشركة النيل العامة
-            للطرق والكباري - 2009
-          </li>
-          <li>
-            خازوق قطر 0.6 سم - عدد 271 خازوق بمدينة بدر بالسويس عمارة يوسف صلاح
-            - 2009
-          </li>
-          <li>
-            خازوق قطر 0.6 م - عدد 13 بعمق 10 متر سند جوانب عمارة مكتبة ببايونير
-            – 2007
-          </li>
-          <li>
-            خازوق قطر 0.8 م - عدد 180 خازوق بطول 15 متر بمصنع جديد عز الدخيلة –
-            2007
-          </li>
-          <li>
-            خازوق قطر 0.8 م - عدد 11 خازوق بطول 12 متر بمشروع السلام مقارنة
-            بشركة المجموعة العقارية – 2007
-          </li>
-          <li>
-            خازوق قطر 0.6 م - عدد 23 خازوق بطول 12 متر بمشروع فيلا بالهضبة –
-            2007
-          </li>
-          <li>
-            خازوق قطر 0.6 م - عدد 62 خازوق بطول 15 متر بمشروع توصيل مواسير مياه
-            خام شركة مياه الشرب بأسوان – 2007
-          </li>
-          <li>
-            خازوق قطر 0.5 م - عدد 9 خوازيق بطول 10 م بمنطقة أسيوط الجديدة – 2007
-          </li>
-          <li>
-            خازوق قطر 0.6 م - عدد 20 خازوق سند جوانب حفرة محطة وقود – 2008
-          </li>
-          <li>
-            خازوق قطر 0.5 م - عدد 42 خازوق بطول 10 م بفيلا الدكتور/ كمال حسن –
-            2008
-          </li>
-          <li>
-            خازوق قطر 0.6 م - عدد 112 خازوق سند جوانب حفر بعمارات جهاز مدينة
-            العبور مقارنة بشركة وادى النيل – 2008
-          </li>
-          <li>
-            خازوق قطر 0.6 م - عدد 178 خازوق سند جوانب حفر بمصنع البلاستيك مقارنة
-            بشركة قرطام – 2008
-          </li>
-          <li>
-            خازوق قطر 0.6 م - عدد 53 خازوق بمصنع الزجاج بالسادس من أكتوبر مقارنة
-            بشركة هيتاشى اليابانية – 2008
-          </li>
-          <li>
-            خازوق قطر 0.6 م - عدد 9 خوارق وكبس خزانات السولار والتحضير – 2008
-          </li>
-          <li>
-            خازوق قطر 0.6 م - عدد 143 خازوق سند جوانب حفر ببرج مقارنة بشركة نظم
-            الطاقة الحديثة – 2009
-          </li>
-          <li>
-            خازوق قطر 0.6 م - عدد 271 خازوق بمدينة بدر بالسويس عمارة يوسف صلاح –
-            2009
-          </li>
-          <li>
-            خازوق قطر 0.6 م - عدد 48 خازوق كبارى بكفر الشيخ لشركة النيل العامة
-            للطرق والكباري – 2009
-          </li>
-          <li>
-            خازوق قطر 0.8 م - عدد 90 خازوق سند جوانب حفر عمارة بالإسماعيلية
-            منطقة الثلاثين – 2009
-          </li>
-          <li>
-            خازوق عمارة مكتبة بشارع عبود – ملك شركة وادى النيل (88 خازوق أعماق
-            12 م، قطر 0.6 م) – 2013
-          </li>
-          <li>خازوق قطر 0.6 م بطول 15 م – أكتوبر الجديدة – 2013</li>
-          <li>خازوق قطر 0.6 م بطول 13 م – أكتوبر (أمام فندق كونكورد) – 2013</li>
-          <li>خازوق قطر 0.8 م بطول 18 م – عمارة بمدينة نصر – 2013</li>
-          <li>خازوق قطر 0.8 م بطول 16 م – مشروع فيلا بالتجمع الخامس – 2014</li>
-          <li>خازوق قطر 0.8 م بطول 13 م – مشروع شركة النيل للمقاولات – 2014</li>
-          <li>
-            خازوق قطر 0.6 م بطول 13 م – مشروع وزارة الاتصالات (ش. عباس العقاد) –
-            2014
-          </li>
-          <li>خازوق قطر 0.6 م بطول 16 م – مشروع شركة المقاولون العرب – 2014</li>
-          <li>خازوق قطر 0.8 م بطول 17 م – مشروع عمارة المنيل – 2014</li>
-          <li>خازوق قطر 0.6 م بطول 13 م – عمارة شارع أحمد حلمي – 2014</li>
-          <li>خازوق قطر 0.6 م بطول 13 م – مشروع هيئة سكك حديد مصر – 2014</li>
-          <li>خازوق قطر 0.6 م بطول 15 م – مشروع مول التجمع الخامس – 2015</li>
-          <li>خازوق قطر 0.6 م بطول 11 م – مشروع عمارة مكتبة بالمعادي – 2015</li>
-        </ul>
-      </div>
-    </div>
+    </section>
   );
 };
 

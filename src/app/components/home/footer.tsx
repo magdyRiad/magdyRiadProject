@@ -1,51 +1,100 @@
-import React from "react";
+"use client";
+
+import { motion } from "framer-motion";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 const FooterPage = () => {
   return (
-    <footer className="bg-[#0B1F3A] text-white pt-10 pb-6 px-4">
-      <div className="container mx-auto flex flex-col md:flex-row gap-8 justify-between items-start">
-        {/* Contact Info */}
-        <div className="flex-1 space-y-4 text-end">
-          <h2 className="text-xl font-bold border-b-2 border-[#5A9BD5] pb-2">
-            تواصل معنا
-          </h2>
+    <footer
+      className="relative overflow-hidden bg-[#08172B] text-white"
+      id="footer"
+    >
+      {/* Background */}
 
-          <div className="flex items-center justify-end gap-2 text-sm md:text-lg">
-            <span>201222476493</span>
-            <FaPhoneAlt className="text-[#5A9BD5]" />
-          </div>
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute -top-20 -left-20 h-72 w-72 rounded-full bg-red-600 blur-3xl" />
 
-          <div className="flex items-center justify-end gap-2 text-sm md:text-lg">
-            <span>magdyriadfoundation@gmail.com</span>
-            <FaEnvelope className="text-[#5A9BD5]" />
-          </div>
-
-          {/* <div className="flex items-center justify-end gap-2 text-sm md:text-lg">
-            <span>شارع محمد علي، يشسيب من شايب</span>
-            <FaMapMarkerAlt className="text-[#5A9BD5]" />
-          </div> */}
-        </div>
-
-        {/* Google Map */}
-        {/* <div className="flex-1">
-          <Link
-            href="https://www.google.com/maps/place/Cairo+Festival+City+Mall/@30.0218055,31.4154445,14z/data=!4m6!3m5!1s0x14583dd9f831b247:0xa7848c6a8c566be8!8m2!3d30.0288362!4d31.4075861!16s%2Fg%2F11f6k5qwql?entry=ttu"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src={map}
-              alt="location"
-              className="rounded-md shadow-lg hover:scale-105 transition-transform duration-300"
-            />
-          </Link>
-        </div> */}
+        <div className="absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-yellow-500 blur-3xl" />
       </div>
 
-      <div className="text-center mt-8 text-sm text-gray-400">
-        &copy; {new Date().getFullYear()} جميع الحقوق محفوظة لشركة مجدي رياض
-        للمقاولات.
+      <div className="relative max-w-7xl mx-auto px-6 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          {/* Header */}
+
+          <div className="text-center mb-16">
+            <p className="text-red-500 font-bold tracking-[6px] mb-4">
+              CONTACT US
+            </p>
+
+            <h2 className="text-4xl md:text-5xl font-black">تواصل معنا</h2>
+
+            <div className="w-28 h-1 bg-red-600 rounded-full mx-auto mt-6" />
+          </div>
+
+          {/* Cards */}
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8"
+            >
+              <div className="flex items-center justify-center gap-4">
+                <div className="h-14 w-14 rounded-full bg-red-600 flex items-center justify-center">
+                  <FaPhoneAlt />
+                </div>
+
+                <div className="text-center">
+                  <p className="text-gray-400 mb-1">رقم الهاتف</p>
+                  <p
+                    dir="ltr"
+                    className="font-bold text-lg text-center tracking-wider"
+                  >
+                    +20 122 247 6493
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8"
+            >
+              <div className="flex items-center justify-center gap-4">
+                <div className="h-14 w-14 rounded-full bg-red-600 flex items-center justify-center">
+                  <FaEnvelope />
+                </div>
+
+                <div className="text-center">
+                  <p className="text-gray-400 mb-1">البريد الإلكتروني</p>
+
+                  <p className="font-bold text-sm md:text-lg break-all">
+                    magdyriadfoundation@gmail.com
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Company Name */}
+
+          <div className="border-t border-white/10 mt-16 pt-8 text-center">
+            <h3 className="text-2xl font-black mb-2">MAGTEC FOUNDATIONS</h3>
+
+            <p className="text-gray-400">هندسة الأساسات وبناء المستقبل</p>
+          </div>
+
+          {/* Copyright */}
+
+          <div className="text-center mt-8 text-sm text-gray-500">
+            © {new Date().getFullYear()} جميع الحقوق محفوظة لشركة مجدي رياض
+            للمقاولات
+          </div>
+        </motion.div>
       </div>
     </footer>
   );

@@ -1,35 +1,92 @@
-import React from "react";
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
-import imageCover from "../../image/L.0-4-APP.png";
 import Link from "next/link";
+
+import imageCover from "../../image/L.0-4-APP.png";
+
 const AboutCompany = () => {
   return (
-    <div className="w-full relative h-[85vh] flex items-center pr-4 ">
-      <Image
-        alt=""
-        src={imageCover}
-        className="w-full left-0  h-[50vh] lg:h-[80vh]  absolute"
-      />
-      <div className="z-10  relative left-3/12 md:left-6/12 lg:left-8/12  rounded-lg ">
-        <div className="w-full flex justify-end flex-wrap gap-3">
-          <h1 className="w-full text-5xl text-end font-bold mb-2">عن الشركة</h1>
-          <div className="bg-[#FF3131] w-48 h-1 rounded-lg"></div>
-        </div>
-        <div className="w-full flex  flex-wrap justify-end">
-          <p className="lg:w-1/4 md:w-2/4 w-3/4 text-[#0B1F3A] bg-white/40 p-4 text-sm md:text-xl rounded-md m-1  font-bold ">
-            تعتبر شركة ماجتك للاساسات المكانيكية (م/مجدي رياض) من أحد رواد
-            الهندسة المدنية ، و تركز في المقام الأول في عملها على البنية التحتية
-            و المشاريع الراقية التي تخدم الصالح العام و الخاص بأعلى كفاءة و جودة
-            ممكنة .
-          </p>
-          <div className="w-full flex justify-end mt-10">
-            <button className="btn btn-md lg:btn-lg xl:btn-xl bg-[#A12327] hover:bg-[#FF3131] text-white">
-              <Link href="/we">تعرف علي المزيد</Link>
-            </button>
-          </div>
-        </div>
+    <section className="relative py-24 overflow-hidden">
+      {/* الصورة بعرض الشاشة */}
+      <div className="absolute inset-0">
+        <Image
+          src={imageCover}
+          alt="About Company"
+          fill
+          priority
+          className="object-cover"
+        />
+
+        {/* طبقة تغميق */}
+        <div className="absolute inset-0 bg-[#0B1F3A]/30" />
+
+        {/* جريدينت */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1F3A]/50 via-[#0B1F3A]/30 to-transparent" />
       </div>
-    </div>
+
+      {/* المحتوى */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-2xl"
+        >
+          {/* العنوان */}
+
+          <p className="text-red-500 font-bold tracking-[6px] mb-4">ABOUT US</p>
+
+          <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
+            عن الشركة
+          </h2>
+
+          <div className="w-28 h-1 rounded-full bg-red-500 mb-8"></div>
+
+          {/* الصندوق */}
+
+          <div className="bg-white/10 backdrop-blur-lg rounded-3xl border border-white/20 p-6 md:p-10 shadow-2xl">
+            <p className="text-gray-100 text-base md:text-lg leading-9">
+              تعتبر شركة ماجتك للأساسات الميكانيكية من الشركات الرائدة في مجال
+              الهندسة المدنية والبنية التحتية، حيث نسعى لتقديم حلول هندسية
+              متطورة بأعلى معايير الجودة والكفاءة، مع التركيز على تنفيذ
+              المشروعات المتخصصة التي تخدم القطاعين العام والخاص.
+            </p>
+
+            {/* الأرقام */}
+
+            <div className="grid grid-cols-3 gap-4 mt-10">
+              <div className="text-center">
+                <h3 className="text-3xl font-black text-red-500">20+</h3>
+
+                <p className="text-gray-300 text-sm">سنوات خبرة</p>
+              </div>
+
+              <div className="text-center">
+                <h3 className="text-3xl font-black text-red-500">100+</h3>
+
+                <p className="text-gray-300 text-sm">مشروع</p>
+              </div>
+
+              <div className="text-center">
+                <h3 className="text-3xl font-black text-red-500">100%</h3>
+
+                <p className="text-gray-300 text-sm">جودة تنفيذ</p>
+              </div>
+            </div>
+
+            <Link
+              href="/we"
+              className="inline-flex mt-10 items-center justify-center rounded-full bg-red-600 px-8 py-4 text-white font-bold transition-all duration-300 hover:scale-105 hover:bg-red-700"
+            >
+              تعرف على المزيد
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 

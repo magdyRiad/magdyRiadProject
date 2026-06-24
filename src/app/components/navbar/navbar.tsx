@@ -1,67 +1,64 @@
-import React from "react";
-import Logo from "./logo";
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
+import Logo from "./logo";
 import MobileNavBar from "./mobileNavBar";
+
+const links = [
+  {
+    title: "الرئيسية",
+    href: "/",
+  },
+  {
+    title: "عن الشركة",
+    href: "/we",
+  },
+  {
+    title: "المشروعات",
+    href: "/projects",
+  },
+  {
+    title: "عملاؤنا",
+    href: "/clients",
+  },
+];
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between md:fixed w-full md:w-3/4 lg:w-11/12 xl:w-2/4 md:top-4 md:left-2/4 md:-translate-x-2/4 bg-black/80 text-white  p-2 md:rounded-md text-xl z-[7337]">
-      <ul className="md:flex hidden gap-5 items-center text-sm lg:text-lg ">
-        <li>
-          <Link
-            className="hover:text-2xl duration-300 hover:font-bold"
-            href="/"
-          >
-            الرئيسية
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="hover:text-2xl duration-300 hover:font-bold"
-            href="/we"
-          >
-            عن الشركة
-          </Link>
-        </li>
+    <motion.nav
+      initial={{ y: -80 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="fixed top-0 left-0 z-[9999] w-full px-4 py-4"
+    >
+      <div className="mx-auto max-w-7xl">
+        <div className="h-20 px-6 rounded-2xl border border-white/10 backdrop-blur-xl bg-[#08172D]/80 shadow-2xl flex items-center justify-between">
+          {/* Desktop */}
 
-        <li>
-          <Link
-            className="hover:text-2xl duration-300 hover:font-bold"
-            href="/projects"
-          >
-            المشروعات
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="hover:text-2xl duration-300 hover:font-bold"
-            href="/clients"
-          >
-            عملاءنا
-          </Link>
-        </li>
-        {/* 
-        <li>
-          <Link
-            className="hover:text-2xl duration-300 hover:font-bold"
-            href="/services"
-          >
-            خدماتنا
-          </Link>
-        </li> */}
+          <ul className="hidden md:flex items-center gap-10">
+            {links.map((link, index) => (
+              <li key={index}>
+                <Link
+                  href={link.href}
+                  className="relative text-gray-200 font-semibold transition duration-300 hover:text-red-500 after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-0 after:bg-red-500 after:duration-300 hover:after:w-full"
+                >
+                  {link.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-        {/* <li>
-          <Link
-            className="hover:text-2xl duration-300 hover:font-bold"
-            href="/contact"
-          >
-            الاتصال بنا
-          </Link>
-        </li> */}
-      </ul>
-      <MobileNavBar />
-      <Logo />
-    </div>
+          {/* Mobile */}
+
+          <MobileNavBar />
+
+          {/* Logo */}
+
+          <Logo />
+        </div>
+      </div>
+    </motion.nav>
   );
 };
 

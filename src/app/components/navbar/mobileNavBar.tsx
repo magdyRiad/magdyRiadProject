@@ -1,39 +1,68 @@
 "use client";
-import React, { useState } from "react";
-import { BiMenuAltRight } from "react-icons/bi";
+
+import { useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { BiMenuAltRight } from "react-icons/bi";
+import { IoClose } from "react-icons/io5";
+
+const links = [
+  {
+    title: "الرئيسية",
+    href: "/",
+  },
+  {
+    title: "عن الشركة",
+    href: "/we",
+  },
+  {
+    title: "المشروعات",
+    href: "/projects",
+  },
+  {
+    title: "عملاؤنا",
+    href: "/clients",
+  },
+];
 
 const MobileNavBar = () => {
   const [active, setActive] = useState(false);
+
   return (
-    <div className="block md:hidden">
-      <BiMenuAltRight
-        className={`${
-          active ? " rotate-180" : ""
-        } duration-300 text-4xl cursor-pointer`}
-        onClick={() => setActive((prev) => !prev)}
-      />
-      {active && (
-        <ul className="menu bg-base-200  rounded-box w-44 absolute z-50 right-0 top-14 text-black ">
-          <li className=" ">
-            <Link href="/" className="">
-              الرئيسية
-            </Link>
-          </li>
-          <li className=" ">
-            <Link href="/we">عن الشركة</Link>
-          </li>
-          <li className=" ">
-            <Link href="/projects">المشروعات</Link>
-          </li>
-          <li className=" ">
-            <Link href="/clients">عملاءنا</Link>
-          </li>
-          {/* <li className=" ">
-            <Link href="/contact">الاتصال بنا</Link>
-          </li> */}
-        </ul>
-      )}
+    <div className="md:hidden">
+      <button onClick={() => setActive(!active)}>
+        {active ? (
+          <IoClose className="text-4xl text-white" />
+        ) : (
+          <BiMenuAltRight className="text-4xl text-white" />
+        )}
+      </button>
+
+      <AnimatePresence>
+        {active && (
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-24 left-4 right-4 rounded-2xl bg-[#0B1F3A]/95 backdrop-blur-xl border border-white/10 shadow-2xl"
+          >
+            <ul className="flex flex-col p-5 gap-5 text-center">
+              {links.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setActive(false)}
+                    className="block text-lg font-semibold text-white hover:text-red-500 duration-300"
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -1,16 +1,22 @@
-import CarouselImg from "./components/home/carouselImg";
+import Baner from "./components/home/baner";
+import VideoPlayer from "./components/home/videoPlayer";
 import ServiecsPage from "./components/home/serviecs";
 import AboutCompany from "./components/home/aboutCompany";
 import OurPartaner from "./components/home/ourPartaner";
-import Baner from "./components/home/baner";
+
 export default function Home() {
   return (
-    <div>
-      <Baner />
-      <CarouselImg />
+    <main className="bg-slate-50 overflow-hidden">
+      <section className="relative">
+        <VideoPlayer />
+        <Baner />
+      </section>
+
       <ServiecsPage />
+
       <AboutCompany />
+
       <OurPartaner />
-    </div>
+    </main>
   );
 }
