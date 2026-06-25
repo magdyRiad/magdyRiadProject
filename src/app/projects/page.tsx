@@ -13,13 +13,14 @@ import project4 from "../image/4.jpeg";
 import project5 from "../image/5.jpeg";
 import project6 from "../image/6.jpeg";
 import project7 from "../image/7.jpeg";
+import project8 from "../image/13.jpeg";
 
 const projects = [
   {
     title: "نفق عدلي منصور",
     year: "2020",
     client: "عدلي منصور",
-    piles: "غير محدد",
+    piles: null,
     diameter: "17 م - قطر 60 سم",
     image: project1,
   },
@@ -37,7 +38,7 @@ const projects = [
     title: "توسعات الطريق الدائري",
     year: "2022",
     client: "أبناء حسن علام",
-    piles: "غير محدد",
+    piles: null,
     diameter: "18 م - قطر 60 سم",
     image: project6,
   },
@@ -55,7 +56,7 @@ const projects = [
     title: "أفران مصنع حديد عز",
     year: "2022",
     client: "غير محدد",
-    piles: "غير محدد",
+    piles: null,
     diameter: "16 م - قطر 60 سم",
     image: project5,
   },
@@ -80,10 +81,10 @@ const projects = [
   {
     title: "مشروع مترو ابو قير داخل محطة سيدي جابر بالاسكندريه",
     year: "2026",
-    client: "غير محدد",
-    piles: "غير محدد",
-    diameter: "قطر40 سم 18م",
-    image: project4,
+    client: "شركة اوراسكوم للانشائات",
+    piles: null,
+    diameter: "18 م - قطر 40 سم",
+    image: project8,
   },
 ];
 
@@ -153,7 +154,6 @@ const ProjectsApp = () => {
                   <h2 className="text-2xl font-black text-[#0B1F3A] mb-6">
                     {proj.title}
                   </h2>
-
                   <div className="space-y-3 text-gray-700">
                     <p>
                       📅 <span className="font-bold">السنة :</span> {proj.year}
@@ -166,11 +166,14 @@ const ProjectsApp = () => {
                         {proj.client}
                       </span>
                     </p>
-
-                    <p>
-                      🔢 <span className="font-bold">عدد الخوازيق :</span>{" "}
-                      {proj.piles}
-                    </p>
+                    {proj.piles !== null ? (
+                      <p>
+                        🔢 <span className="font-bold">عدد الخوازيق :</span>{" "}
+                        {proj.piles}
+                      </p>
+                    ) : (
+                      ""
+                    )}
 
                     <p>
                       📏 <span className="font-bold">الأبعاد :</span>{" "}
