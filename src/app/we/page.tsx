@@ -9,6 +9,8 @@ import machine1 from "../image/20.jpeg";
 import machine2 from "../image/21.jpeg";
 import machine4 from "../image/22.jpeg";
 import machine5 from "../image/23.jpeg";
+import machine6 from "../image/25.jpeg";
+import machine7 from "../image/26.jpeg";
 
 const WeAre = () => {
   return (
@@ -99,28 +101,30 @@ const WeAre = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[machine1, machine2, machine4, machine5].map((img, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.6,
-                  delay: index * 0.15,
-                }}
-                whileHover={{
-                  y: -10,
-                }}
-                className="overflow-hidden rounded-3xl shadow-xl"
-              >
-                <Image
-                  src={img}
-                  alt={`machine-${index}`}
-                  className="w-full h-80 object-cover transition duration-500 hover:scale-110"
-                />
-              </motion.div>
-            ))}
+            {[machine1, machine2, machine4, machine5, machine6, machine7].map(
+              (img, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.6,
+                    delay: index * 0.15,
+                  }}
+                  whileHover={{
+                    y: -10,
+                  }}
+                  className="overflow-hidden rounded-3xl shadow-xl"
+                >
+                  <Image
+                    src={img}
+                    alt={`machine-${index}`}
+                    className="w-full h-80 object-cover transition duration-500 hover:scale-110"
+                  />
+                </motion.div>
+              ),
+            )}
           </div>
         </div>
       </section>

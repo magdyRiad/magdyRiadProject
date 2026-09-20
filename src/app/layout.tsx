@@ -11,9 +11,13 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  title: "Magtec Foundations",
+  metadataBase: new URL("https://www.magdyriad.net"),
+
+  title: "Magtec Foundations | شركة مقاولات وخوازيق وأساسات في مصر",
+
   description:
-    "شركتنا تقدم خدمات المقاولات العامة، أعمال الخوازيق الحديد، الأساسات العميقة، والبناء الحديث بأفضل جودة وسعر في السوق المصري.",
+    "Magtec Foundations شركة متخصصة في أعمال المقاولات العامة، الخوازيق الحديد، الأساسات العميقة، وأعمال البناء في مصر.",
+
   keywords: [
     "مقاولات",
     "شركات مقاولات",
@@ -24,16 +28,58 @@ export const metadata: Metadata = {
     "شركات بناء",
     "مقاولات عامة",
   ],
+
   openGraph: {
-    title: "أفضل شركات المقاولات في مصر | خوازيق حديد وأعمال الأساسات",
+    title: "Magtec Foundations | شركة مقاولات وخوازيق وأساسات في مصر",
+
     description:
-      "خدماتنا تشمل جميع أنواع المقاولات: من الخوازيق الحديد والأساسات حتى التشطيب الكامل للمشاريع السكنية والتجارية.",
-    // url: "https://yourdomain.com", // غيّره لنطاقك الحقيقي
+      "خدمات المقاولات العامة والخوازيق الحديد والأساسات العميقة وأعمال البناء في مصر.",
+
+    url: "https://www.magdyriad.net/",
+
+    siteName: "Magtec Foundations",
+
+    locale: "ar_EG",
+
     type: "website",
+
+    images: [
+      {
+        url: "https://www.magdyriad.net/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Magtec Foundations - شركة مقاولات وخوازيق وأساسات",
+      },
+    ],
   },
-  // alternates: {
-  //   canonical: "https://yourdomain.com", // غيّره لنطاقك الحقيقي
-  // },
+
+  twitter: {
+    card: "summary_large_image",
+
+    title: "Magtec Foundations | شركة مقاولات وخوازيق وأساسات في مصر",
+
+    description:
+      "خدمات المقاولات العامة والخوازيق الحديد والأساسات العميقة وأعمال البناء في مصر.",
+
+    images: ["https://www.magdyriad.net/og-image.jpg"],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+
+  alternates: {
+    canonical: "https://www.magdyriad.net/",
+  },
 };
 
 export default function RootLayout({
