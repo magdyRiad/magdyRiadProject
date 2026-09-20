@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 
     images: [
       {
-        url: "https://www.magdyriad.net/og-image.jpg",
+        url: "https://www.magdyriad.net/og-image.png",
         width: 1200,
         height: 630,
         alt: "Magtec Foundations - شركة مقاولات وخوازيق وأساسات",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     description:
       "خدمات المقاولات العامة والخوازيق الحديد والأساسات العميقة وأعمال البناء في مصر.",
 
-    images: ["https://www.magdyriad.net/og-image.jpg"],
+    images: ["https://www.magdyriad.net/og-image.png"],
   },
 
   robots: {
