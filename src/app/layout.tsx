@@ -3,6 +3,7 @@ import { Cairo } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar/navbar";
 import FooterPage from "./components/home/footer";
+import Hacker from "./components/hacker";
 
 const cairo = Cairo({
   variable: "--font-cairo",
@@ -91,6 +92,7 @@ export default function RootLayout({
     <html lang="ar" dir="rtl">
       <body className={`${cairo.variable} antialiased`}>
         <Navbar />
+        <Hacker />
         {children}
         <FooterPage />
       </body>
